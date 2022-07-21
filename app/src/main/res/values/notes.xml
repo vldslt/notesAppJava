@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="notes">
+        <item>Рабочий</item>
+        <item>Учебный</item>
+        <item>Деловой</item>
+        <item>Важный</item>
+        <item>Не важный</item>
+        <item>Мусор</item>
+    </string-array>
+
+    <string-array name="notes_info_arr">
+        <item>Пусто</item>
+        <item>Много всякого и непонятно</item>
+        <item> *что-то на деловом* </item>
+        <item>ОООЧЕНЬ важная штучка</item>
+        <item>Ничего</item>
+        <item> 8==э </item>
+    </string-array>
+
+</resources>
