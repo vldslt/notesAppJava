@@ -1,8 +1,11 @@
-package com.example.notesappjava;
+package com.example.notesappjava.NotesMain;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.notesappjava.NotesFragments.NotesFragment;
+import com.example.notesappjava.R;
 
 public class MainActivity extends AppCompatActivity {
 

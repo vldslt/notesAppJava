@@ -1,11 +1,8 @@
-package com.example.notesappjava;
+package com.example.notesappjava.NotesFragments;
 
-import android.annotation.SuppressLint;
-import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,12 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.notesappjava.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link NotesInfoFragment#newInstance} factory method to
+ * Use the {@link OpenNoteFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NotesInfoFragment extends Fragment {
+public class OpenNoteFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,7 +28,7 @@ public class NotesInfoFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public NotesInfoFragment() {
+    public OpenNoteFragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +38,11 @@ public class NotesInfoFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment NotesInfoFragment.
+     * @return A new instance of fragment OpenNoteFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NotesInfoFragment newInstance(String param1, String param2) {
-        NotesInfoFragment fragment = new NotesInfoFragment();
+    public static OpenNoteFragment newInstance(String param1, String param2) {
+        OpenNoteFragment fragment = new OpenNoteFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,31 +63,19 @@ public class NotesInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notes_info, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle saveInstanceState) {
-        super.onViewCreated(view, saveInstanceState);
-        Bundle arguments = getArguments();
-        if (arguments!=null){
-            int index = arguments.getInt(ARG_INDEX);
-
-            TextView textView = view.findViewById(R.id.notes_info_view);
-            TypedArray info = getResources().obtainTypedArray(R.array.notes_info_arr);
-            textView.setText(getString(index,0));
-
-            info.recycle();
-        }
-
+        View rootView = inflater.inflate(R.layout.fragment_open_note, container, false);
+        TextView textView = rootView.findViewById(R.id.header);
+        textView.setTypeface(Typeface.DEFAULT_BOLD);
+        return rootView;
     }
     static final String ARG_INDEX = "index";
 
-    public static NotesInfoFragment newInstance(int index) {
-        NotesInfoFragment fragment = new NotesInfoFragment();
+    public static OpenNoteFragment newInstance(int index) {
+        OpenNoteFragment fragment = new OpenNoteFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_INDEX, index);
+        args.putString(ARG_INDEX, String.valueOf(index));
         fragment.setArguments(args);
         return fragment;
     }
+
 }

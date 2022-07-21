@@ -1,4 +1,4 @@
-package com.example.notesappjava;
+package com.example.notesappjava.NotesFragments;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.notesappjava.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -80,18 +82,34 @@ public class NotesFragment extends Fragment {
         LinearLayout linearLayout = (LinearLayout) view;
         String[] notes = getResources().getStringArray(R.array.notes);
 
-        for (int i=0; i < notes.length; i++){
+
+        for (int i = 0; i < notes.length; i++) {
             TextView textView = new TextView(getContext());
             textView.setText(notes[i]);
             textView.setTextSize(40);
             linearLayout.addView(textView);
 
+
             final int index = i;
-            textView.setOnClickListener( v -> {
-                showNotesInfo(index);
+            textView.setOnClickListener(v -> {
+                openNote(index);
             });
         }
     }
+
+    private void openNote(int index) {
+        OpenNoteFragment openNoteFragment = OpenNoteFragment.newInstance(index);
+        requireActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fragment_container, openNoteFragment)
+                .commit();
+        ;
+
+
+
+
+    /*
     private void showNotesInfo(int index) {
         NotesInfoFragment notesInfoFragment = NotesInfoFragment.newInstance(index);
 
@@ -100,6 +118,8 @@ public class NotesFragment extends Fragment {
                 .beginTransaction()
                 .add(R.id.fragment_container, notesInfoFragment)
                 .commit();
-    }
 
+        */
+
+    }
 }
